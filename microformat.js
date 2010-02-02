@@ -51,15 +51,16 @@ if (typeof Prototype != 'undefined' || !Array.prototype.filter) {
 // ISO8601 Date extension
 Date.ISO8601PartMap = {
   Year : 1,
-  Month : 3,
-  Date : 5,
-  Hours : 7,
-  Minutes : 8,
-  Seconds : 9 
+  Month : 2,
+  Date : 3,
+  Hours : 4,
+  Minutes : 5,
+  Seconds : 6,
+  Milliseconds: 7
 }
 
 Date.matchISO8601 = function(text) { 
-  return text.match(/^(\d{4})(-?(\d{2}))?(-?(\d{2}))?(T(\d{2}):?(\d{2})(:?(\d{2}))?)?(Z?(([+\-])(\d{2}):?(\d{2})))?$/); 
+  return text.match(/^(\d{4})(?:-?(\d{2})(?:-?(\d{2})(?:T(\d{2}):?(\d{2})(?::?(\d{2})(?:[.]?(\d+))?)?(?:Z|(?:([+-])(\d{2}):?(\d{2}))?)?)?)?)?$/);
 }
 
 Date.parseISO8601 = function(text) {
