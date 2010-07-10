@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Sample Test</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="../js/prototype.js" type="text/javascript"></script>
+<script src="../js/unittest.js" type="text/javascript"></script>
+<script src="../js/suiterunner.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../j3unit.css" type="text/css" />
+</head>
+
+<body>
+<div style="display:none">
+  <div id="t1">
+    <div class="geo">GEO: 
+     <span class="latitude">37.386013</span>, 
+     <span class="longitude">-122.082932</span>
+    </div>
+  </div>
+  
+  <div id="t2">
+    <div class="geo">
+     <abbr class="latitude" title="37.408183">N 37° 24.491</abbr> 
+     <abbr class="longitude" title="-122.13855">W 122° 08.313</abbr>
+    </div>
+  </div>
+</div>
+<!-- Log output -->
+<div id="testlog"></div>
+
+<script src="../../microformat.js" type="text/javascript"></script>
+<script src="../../geo.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript" charset="utf-8">
+// <![CDATA[
+
+  // Lets test a few basic prototype features as an example
+  var testCase = new Test.Unit.Runner({    
+	  testBasic: function() {with(this) {
+		  var geos = Geo.discover($('t1'));
+		  assertEqual(1, geos.length);
+		  var geo = geos[0]
+		  console.log(geo);
+		  assertEqual('37.386013', geo.latitude);
+		  assertEqual('-122.082932', geo.longitude);
+	  }},
+	  testHuman: function() {with(this) {
+		  var geos = Geo.discover($('t2'));
+		  assertEqual(1, geos.length);
+		  var geo = geos[0]
+		  console.log(geo);
+		  assertEqual('37.408183', geo.latitude);
+		  assertEqual('-122.13855', geo.longitude);
+	  }}
+  }, 'testlog');
+  
+// ]]>
+
+</script>
+
+</body>
+
+</html>
